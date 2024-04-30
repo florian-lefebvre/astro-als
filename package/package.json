@@ -1,11 +1,11 @@
 {
-	"name": "package-name",
+	"name": "astro-als",
 	"version": "0.0.0",
-	"description": "TODO:",
+	"description": "Avoid hydration mismatches by getting the data on both server and client using an AsyncLocalStorage in Astro.",
 	"author": {
-		"email": "TODO:",
-		"name": "TODO:",
-		"url": "TODO:"
+		"email": "contact@florian-lefebvre.dev",
+		"name": "Florian Lefebvre",
+		"url": "https://florian-lefebvre.dev"
 	},
 	"license": "MIT",
 	"keywords": [
@@ -13,9 +13,11 @@
 		"astro-component",
 		"withastro",
 		"astro",
-		"TODO:"
+		"performance",
+		"seo",
+		"ui"
 	],
-	"homepage": "TODO:",
+	"homepage": "https://github.com/florian-lefebvre/astro-als",
 	"publishConfig": {
 		"access": "public"
 	},

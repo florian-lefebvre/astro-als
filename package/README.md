@@ -1,6 +1,6 @@
-# `package-name`
+# `astro-als`
 
-This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that TODO:description
+This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that allows you to avoid hydration mismatches by getting the data on both server and client using an AsyncLocalStorage.
 
 ## Usage
 
@@ -8,20 +8,23 @@ This is an [Astro integration](https://docs.astro.build/en/guides/integrations-g
 
 TODO:
 
+- cloudflare flag
+- behavior depending on the output
+
 ### Installation
 
 Install the integration **automatically** using the Astro CLI:
 
 ```bash
-pnpm astro add package-name
+pnpm astro add astro-als
 ```
 
 ```bash
-npx astro add package-name
+npx astro add astro-als
 ```
 
 ```bash
-yarn astro add package-name
+yarn astro add astro-als
 ```
 
 Or install it **manually**:
@@ -29,21 +32,21 @@ Or install it **manually**:
 1. Install the required dependencies
 
 ```bash
-pnpm add package-name
+pnpm add astro-als
 ```
 
 ```bash
-npm install package-name
+npm install astro-als
 ```
 
 ```bash
-yarn add package-name
+yarn add astro-als
 ```
 
 2. Add the integration to your astro config
 
 ```diff
-+import integration from "package-name";
++import integration from "astro-als";
 
 export default defineConfig({
   integrations: [
@@ -79,8 +82,4 @@ You can now edit files in `package`. Please note that making changes to those fi
 
 ## Licensing
 
-[MIT Licensed](https://github.com/TODO:/blob/main/LICENSE). Made with ❤️ by [TODO:](https://github.com/TODO:).
-
-## Acknowledgements
-
-TODO:
+[MIT Licensed](https://github.com/florian-lefebvre/astro-als/blob/main/LICENSE). Made with ❤️ by [Florian Lefebvre](https://github.com/astro-als).

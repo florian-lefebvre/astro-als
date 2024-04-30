@@ -1,4 +1,6 @@
 ---
+import AlsSerialize from "astro-als/AlsSerialize.astro"
+
 interface Props {
 	title: string;
 }
@@ -15,6 +17,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<AlsSerialize />
 	</head>
 	<body>
 		<slot />

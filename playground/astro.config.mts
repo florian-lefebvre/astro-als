@@ -2,7 +2,7 @@ import tailwind from "@astrojs/tailwind";
 import { createResolver } from "astro-integration-kit";
 import { hmrIntegration } from "astro-integration-kit/dev";
 import { defineConfig } from "astro/config";
-
+import vue from "@astrojs/vue";
 const { default: als } = await import("astro-als");
 
 // https://astro.build/config
@@ -13,5 +13,6 @@ export default defineConfig({
 		hmrIntegration({
 			directory: createResolver(import.meta.url).resolve("../package/dist"),
 		}),
+		vue(),
 	],
 });

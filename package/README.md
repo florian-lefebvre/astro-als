@@ -8,7 +8,7 @@ This is an [Astro integration](https://docs.astro.build/en/guides/integrations-g
 
 TODO:
 
-- cloudflare flag
+- cloudflare flag: https://developers.cloudflare.com/workers/runtime-apis/nodejs/#enable-only-asynclocalstorage
 - behavior depending on the output
 
 ### Installation

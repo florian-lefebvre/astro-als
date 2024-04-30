@@ -1,5 +1,6 @@
 ---
 import Card from "../components/Card.astro";
+import Test from "../components/Test.vue";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -38,6 +39,7 @@ import Layout from "../layouts/Layout.astro";
 			To get started, open the directory <code>src/pages</code> in your project.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 		</p>
+		<Test client:load />
 		<ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"

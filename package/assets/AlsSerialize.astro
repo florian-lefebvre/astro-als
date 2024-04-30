@@ -1,0 +1,11 @@
+---
+import { userConfig } from "virtual:astro-als/internal/user-config"
+import { getAlsData } from "als:astro";
+---
+
+<script
+  is:inline
+  type="application/json"
+  id={userConfig.clientId}
+  set:html={JSON.stringify(getAlsData())}
+/>

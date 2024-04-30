@@ -2,9 +2,9 @@
 
 - [x] Update all `TODO:`
 - [x] Update all `astro-als` occurences
-- [ ] Add a LICENSE.md at the root
-- [ ] Have gh cli installed
-- [ ] Work on the integration logic
+- [x] Add a LICENSE.md at the root
+- [x] Have gh cli installed
+- [x] Work on the integration logic
 - [ ] Work on docs
   - [ ] JSDoc
   - [ ] Package README

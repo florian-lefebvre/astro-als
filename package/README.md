@@ -6,10 +6,12 @@ This is an [Astro integration](https://docs.astro.build/en/guides/integrations-g
 
 ### Prerequisites
 
-TODO:
+When using the Cloudflare adapter, you'll need to [enable AsyncLocalStorage manually](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#enable-only-asynclocalstorage).
 
-- cloudflare flag: https://developers.cloudflare.com/workers/runtime-apis/nodejs/#enable-only-asynclocalstorage
-- behavior depending on the output
+### Limitations
+
+- All data must be serializable
+- The data will be be made static on prerendered pages
 
 ### Installation
 
@@ -46,18 +48,139 @@ yarn add astro-als
 2. Add the integration to your astro config
 
 ```diff
-+import integration from "astro-als";
++import als from "astro-als";
 
 export default defineConfig({
   integrations: [
-+    integration(),
++    als(),
   ],
 });
 ```
 
-### Configuration
+### Create a config file
 
-TODO:configuration
+In your project root, create a new `als.config.ts` file:
+
+```ts
+// als.config.ts
+import { defineAlsConfig } from "astro-als/config";
+
+export default defineAlsConfig({
+	seedData(context) {
+		return {
+			// Your serializable data here
+		};
+	},
+});
+```
+
+This code will be run in a post middleware. The best practise is to only use the `seedData` function to return data without causing any side-effects.
+
+### Use the component
+
+In a shared layout, import `AlsSerialize.astro`:
+
+```astro
+---
+// src/layouts/Layout.astro
+import AlsSerialize from "astro-als/AlsSerialize.astro"
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<AlsSerialize />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+```
+
+### Use the data
+
+You can now import the data server (within a request) and client side using `getAlsData`:
+
+```vue
+<script setup lang="ts">
+// src/components/Test.vue
+import { getAlsData } from "als:astro";
+
+const data = getAlsData();
+</script>
+
+<template>
+    <pre>{{ JSON.stringify(data, null, 2) }}</pre>
+</template>
+```
+
+```astro
+---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Test from "../components/Test.vue";
+---
+
+<Layout title="Welcome to Astro.">
+	<Test client:load />
+</Layout>
+
+```
+
+### Integration configuration
+
+Here is the TypeScript type:
+
+```ts
+export type Options = {
+  configFile?: string;
+  cliendId?: string;
+}
+```
+
+#### `configFile`
+
+Config file path for the integration, relative to the root directory. Defaults to `"als.config"`.
+
+```ts
+import als from "astro-als";
+
+export default defineConfig({
+  integrations: [
+    als({
+      configFile: "./my-custom-config.mjs"
+    }),
+  ],
+});
+```
+
+#### `clientId`
+
+Id used in the DOM to store the data. Defaults to `"astro-als-data"`.
+
+```ts
+import als from "astro-als";
+
+export default defineConfig({
+  integrations: [
+    als({
+      clientId: "my-custom-id"
+    }),
+  ],
+});
+```
 
 ## Contributing
 

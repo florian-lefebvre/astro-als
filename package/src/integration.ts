@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import {
 	addDts,
 	addVirtualImports,
@@ -6,10 +7,9 @@ import {
 	defineIntegration,
 	watchDirectory,
 } from "astro-integration-kit";
-import { fileURLToPath } from "node:url";
+import { AstroError } from "astro/errors";
 import { normalizePath } from "vite";
 import { optionsSchema } from "./options.js";
-import { AstroError } from "astro/errors";
 
 const VIRTUAL_IMPORT_INTERNAL_ALS_ID = "virtual:astro-als/internal/als";
 const VIRTUAL_IMPORT_INTERNAL_CONFIG_ID = "virtual:astro-als/internal/config";

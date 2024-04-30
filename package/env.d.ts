@@ -15,4 +15,4 @@ declare module "als:astro" {
 	export const getAlsData: () => Awaited<
 		ReturnType<import("./src/types.js").AlsConfig["seedData"]>
 	>;
-};
+}

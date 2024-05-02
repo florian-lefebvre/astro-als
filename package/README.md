@@ -147,6 +147,7 @@ Here is the TypeScript type:
 export type Options = {
   configFile?: string;
   cliendId?: string;
+  disableConfigValidation?: boolean;
 }
 ```
 
@@ -177,6 +178,22 @@ export default defineConfig({
   integrations: [
     als({
       clientId: "my-custom-id"
+    }),
+  ],
+});
+```
+
+#### `disableConfigValidation`
+
+Disables validation of the ALS Config file, eg. when there are conflicts with other packages. Defaults to `false`.
+
+```ts
+import als from "astro-als";
+
+export default defineConfig({
+  integrations: [
+    als({
+      disableConfigValidation: true
     }),
   ],
 });

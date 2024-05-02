@@ -17,5 +17,11 @@ export const optionsSchema = z
 		 * @default `"astro-als-data"`
 		 */
 		clientId: z.string().default(DEFAULTS.clientId),
+		/**
+		 * @description Disables validation of the ALS Config file, eg. when there are
+		 * conflicts with other packages.
+		 * @default `false`
+		 */
+		disableConfigValidation: z.boolean().default(false),
 	})
 	.default(DEFAULTS);

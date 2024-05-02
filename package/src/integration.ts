@@ -33,35 +33,37 @@ export const integration = defineIntegration({
 					);
 					const stringifiedAlsConfigPath = JSON.stringify(alsConfigPath);
 
-					addVitePlugin(params, {
-						plugin: {
-							name: "astro-als-validate-als-config",
-							async configureServer(server) {
-								try {
-									const mod = await server.ssrLoadModule(alsConfigPath);
-									if (!mod.default) {
+					if (!options.disableConfigValidation) {
+						addVitePlugin(params, {
+							plugin: {
+								name: "astro-als-validate-als-config",
+								async configureServer(server) {
+									try {
+										const mod = await server.ssrLoadModule(alsConfigPath);
+										if (!mod.default) {
+											throw new AstroError(
+												`Als config located at ${stringifiedAlsConfigPath} has no default export`,
+											);
+										}
+										if (typeof mod.default?.seedData !== "function") {
+											throw new AstroError(
+												`Als config located at ${stringifiedAlsConfigPath} has an invalid default export`,
+												"Use `defineAlsConfig` exported from `astro-als/config`",
+											);
+										}
+									} catch (err) {
+										console.error(err);
+										if (err instanceof AstroError) {
+											throw err;
+										}
 										throw new AstroError(
-											`Als config located at ${stringifiedAlsConfigPath} has no default export`,
+											`Als config located at ${stringifiedAlsConfigPath} could not be found`,
 										);
 									}
-									if (typeof mod.default?.seedData !== "function") {
-										throw new AstroError(
-											`Als config located at ${stringifiedAlsConfigPath} has an invalid default export`,
-											"Use `defineAlsConfig` exported from `astro-als/config`",
-										);
-									}
-								} catch (err) {
-									console.debug(err);
-									if (err instanceof AstroError) {
-										throw err;
-									}
-									throw new AstroError(
-										`Als config located at ${stringifiedAlsConfigPath} could not be found`,
-									);
-								}
+								},
 							},
-						},
-					});
+						});
+					}
 
 					params.addWatchFile(alsConfigPath);
 

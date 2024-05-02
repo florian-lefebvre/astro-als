@@ -1,6 +1,6 @@
 {
 	"name": "astro-als",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Avoid hydration mismatches by getting the data on both server and client using an AsyncLocalStorage in Astro.",
 	"author": {
 		"email": "contact@florian-lefebvre.dev",
@@ -33,7 +33,10 @@
 		},
 		"./AlsSerialize.astro": "./assets/AlsSerialize.astro"
 	},
-	"files": ["dist", "assets"],
+	"files": [
+		"dist",
+		"assets"
+	],
 	"scripts": {
 		"dev": "tsup --watch",
 		"build": "tsup"

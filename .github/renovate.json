@@ -16,5 +16,6 @@
       "schedule": ["before 4am on Monday"],
       "rangeStrategy": "bump"
     }
-  ]
+  ],
+  "ignoreDeps": ["node"]
 }

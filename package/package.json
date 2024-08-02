@@ -43,13 +43,13 @@
 	},
 	"type": "module",
 	"peerDependencies": {
-		"astro": "^4.12.2"
+		"astro": "^4.13.1"
 	},
 	"dependencies": {
-		"astro-integration-kit": "^0.15.0",
-		"vite": "^5.3.4"
+		"astro-integration-kit": "^0.16.0",
+		"vite": "^5.3.5"
 	},
 	"devDependencies": {
-		"tsup": "^8.2.1"
+		"tsup": "^8.2.4"
 	}
 }

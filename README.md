@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This package is deprecated. Use https://inox-tools.fryuni.dev/request-state instead.
+
 # astro-als
 
 Avoid hydration mismatches by getting the data on both server and client using an AsyncLocalStorage in Astro.

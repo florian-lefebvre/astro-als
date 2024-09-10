@@ -26,6 +26,10 @@ export const integration = defineIntegration({
 		return {
 			hooks: {
 				"astro:config:setup": (params) => {
+					params.logger.error(
+						"This integration is deprecated. Use https://inox-tools.fryuni.dev/request-state instead.",
+					);
+
 					watchDirectory(params, resolve());
 
 					const alsConfigPath = normalizePath(

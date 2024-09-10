@@ -1,6 +1,6 @@
 {
 	"name": "astro-als",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Avoid hydration mismatches by getting the data on both server and client using an AsyncLocalStorage in Astro.",
 	"author": {
 		"email": "contact@florian-lefebvre.dev",

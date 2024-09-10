@@ -1,5 +1,11 @@
 # astro-als
 
+## 0.0.4
+
+### Patch Changes
+
+- 33fe774: Deprecates the package
+
 ## 0.0.3
 
 ### Patch Changes
